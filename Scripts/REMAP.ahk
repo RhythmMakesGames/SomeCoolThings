@@ -17,6 +17,7 @@
 CapsLock::RCtrl                 ; Ctrl commands made easier
 RAlt::Home                      ; Jump cursor to start of the line
 RCtrl::End                      ; Jump cursor to end of the line
+RShift::Send "{Shift Up}"       ; Our Masterkey
 
 ;* Hotkeys
 #s::Send "#+s"                  ; Take screenshot
@@ -41,52 +42,48 @@ RShift & x::Send "{Esc}"        ; Escape selection/suggestion
 RShift & <::Send "{Alt down}{Left}{Alt Up}"
 RShift & >::Send "{Alt down}{Right}{Alt Up}"
 
-; Simulate Scroll
+;* Simulate Scroll
 LinesPerScroll := 3             ; Set this accordingly
-RShift & t::Send "{WheelUp}{Up " LinesPerScroll "}"
-RShift & b::Send "{WheelDown}{Down " LinesPerScroll "}"
+RShift & c::Send "{WheelUp}{Up " LinesPerScroll "}"
+RShift & v::Send "{WheelDown}{Down " LinesPerScroll "}"
+
+; Normally you can scroll sideways while holding shift
+CharsPerScroll := 6
+#HotIf GetKeyState("RCtrl")
+    RShift & c::Send "{WheelLeft}{Left " CharsPerScroll "}"
+    RShift & v::Send "{WheelRight}{Right " CharsPerScroll "}"
+#HotIf
 
 ;* Deletion
-RShift & v::Send "{BackSpace}"  ; Delete previous character
-RShift & c::Send "{Delete}"     ; Delete next character
-
-; hold RCtrl (capslock)
-#HotIf GetKeyState("Ctrl")
-                                ; Delete previous word
-    RShift & v::Send "{Ctrl Down}{BackSpace}{Ctrl Up}"
-
-                                ; Delete next word
-    RShift & c::Send "{Ctrl Down}{Delete}{Ctrl Up}"
-
-#HotIf
+RShift & q::Send "{Delete}"     ; Delete next character
 
 ;* Selection and Capitalization 
 RShift & z::CapsLock            ; Toggle Capslock
 
 ; hold RCtrl (capslock)
 #HotIf GetKeyState("RCtrl")
-                                ; Select to previous character
+                                    ; Select to previous character
     RShift & s::Send "{Shift Down}{Left}{Shift Up}"
 
-                                ; Select to previous word
+                                    ; Select to previous word
     RShift & w::Send "{Shift Down}{Ctrl Down}{Left}{Ctrl Up}{Shift Up}"
 
-                                ; Select to next character
+                                    ; Select to next character
     RShift & f::Send "{Shift Down}{Right}{Shift Up}"
 
-                                ; Select to next word
+                                    ; Select to next word
     RShift & r::Send "{Shift Down}{Ctrl Down}{Right}{Ctrl Up}{Shift Up}"
 
-                                ; Select to line above
+                                    ; Select to line above
     RShift & e::Send "{Shift Down}{Up}{Shift Up}"
 
-                                ; Select to line below
+                                    ; Select to line below
     RShift & d::Send "{Shift Down}{Down}{Shift Up}"
 
-                                ; Select to the Start of line
+                                    ; Select to the Start of line
     RShift & g::Send "{Shift Down}{Home}{Shift Up}"
 
-                                ; Select to the End of line
+                                    ; Select to the End of line
     RShift & a::Send "{Shift Down}{End}{Shift Up}"
 
 #HotIf
@@ -95,12 +92,16 @@ RShift & z::CapsLock            ; Toggle Capslock
 ; just move left or right to deselect text
 ; the cursor lands where the selection starts/ends
 
-;* Unused Keys, need revision
-Rshift & q::Send "{Alt Down}{Tab}{Alt Up}"
+;! Unused Keys, need revision
+; c, v, t, b
+Rshift & t::Send "{PgUp}"       ; Page Up? I'm not sure
+Rshift & b::Send "{PgDn}"       ; Page Down perhaps?
 
 ; ----------------------------------------------------------------------------------------------------
 
-; Rough Notes: (for deletion)
+; Try to get used to using LShift for all capitalization
+; or you can use RCtrl instead of RShift as masterkey
+; Rough Notes:
 
 ; keys work really weird
 
