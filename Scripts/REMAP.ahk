@@ -17,7 +17,7 @@
 CapsLock::RCtrl                 ; Ctrl commands made easier
 RAlt::Home                      ; Jump cursor to start of the line
 RCtrl::End                      ; Jump cursor to end of the line
-RShift::Send "{Shift Up}"       ; Our Masterkey
+RShift::Send "{Shift Up}"       ; Our Masterkey (or use RCtrl)
 
 ;* Hotkeys
 #s::Send "#+s"                  ; Take screenshot
@@ -96,28 +96,5 @@ RShift & z::CapsLock            ; Toggle Capslock
 ; c, v, t, b
 Rshift & t::Send "{PgUp}"       ; Page Up? I'm not sure
 Rshift & b::Send "{PgDn}"       ; Page Down perhaps?
-
-; ----------------------------------------------------------------------------------------------------
-
-; Try to get used to using LShift for all capitalization
-; or you can use RCtrl instead of RShift as masterkey
-; Rough Notes:
-
-; keys work really weird
-
-; if you hold a, then tap b, a will halt. result: aaaab
-; if you hold a, then b. result: aaaaabbbbbb
-; u can hold a and b at the same time, but only the last one inputs as text
-
-; Check Hotkeys, and Hotstrings, and Wildcards(*)
-; Timers: https://www.autohotkey.com/docs/v2/lib/SetTimer.htm
-
-; Check(every 50 ms) if shift is held down
-; SetTimer UntoggleShift, 50
-; UntoggleShift()
-; {
-;     if !GetKeyState("Shift", 'P') 
-;         Send "{Shift Up}"        ; causes problems with #s Hotkey, bad solution
-; }
 
 ; ----------------------------------------------------------------------------------------------------
