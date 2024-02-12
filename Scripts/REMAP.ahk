@@ -62,28 +62,28 @@ RShift & z::CapsLock            ; Toggle Capslock
 
 ; hold RCtrl (capslock)
 #HotIf GetKeyState("RCtrl")
-                                    ; Select to previous character
+                                ; Select to previous character
     RShift & s::Send "{Shift Down}{Left}{Shift Up}"
 
-                                    ; Select to previous word
+                                ; Select to previous word
     RShift & w::Send "{Shift Down}{Ctrl Down}{Left}{Ctrl Up}{Shift Up}"
 
-                                    ; Select to next character
+                                ; Select to next character
     RShift & f::Send "{Shift Down}{Right}{Shift Up}"
 
-                                    ; Select to next word
+                                ; Select to next word
     RShift & r::Send "{Shift Down}{Ctrl Down}{Right}{Ctrl Up}{Shift Up}"
 
-                                    ; Select to line above
+                                ; Select to line above
     RShift & e::Send "{Shift Down}{Up}{Shift Up}"
 
-                                    ; Select to line below
+                                ; Select to line below
     RShift & d::Send "{Shift Down}{Down}{Shift Up}"
 
-                                    ; Select to the Start of line
+                                ; Select to the Start of line
     RShift & g::Send "{Shift Down}{Home}{Shift Up}"
 
-                                    ; Select to the End of line
+                                ; Select to the End of line
     RShift & a::Send "{Shift Down}{End}{Shift Up}"
 
 #HotIf
@@ -94,7 +94,7 @@ RShift & z::CapsLock            ; Toggle Capslock
 
 ;! Unused Keys, need revision
 ; c, v, t, b
-Rshift & t::Send "{PgUp}"       ; Page Up? I'm not sure
-Rshift & b::Send "{PgDn}"       ; Page Down perhaps?
+Rshift & t::Send "{PgUp}"
+Rshift & b::Send "{PgDn}"
 
 ; ----------------------------------------------------------------------------------------------------
