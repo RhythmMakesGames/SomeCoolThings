@@ -59,10 +59,6 @@ RShift & v::Send "{WheelDown}{Down " LinesPerScroll "}"
 Rshift & t::Send "{PgUp}"
 Rshift & b::Send "{PgDn}"
 
-                                ; Jump to previous/next cursor position
-RShift & ,::Send "{Alt Down}{Left}{Alt Up}"
-RShift & .::Send "{Alt Down}{Right}{Alt Up}"
-
 ;* Deletion
 
 RShift & x::Send "{Delete}"     ; Delete next character
@@ -99,7 +95,6 @@ RShift & q::Send "{Esc}"        ; Escape suggestion
 ; cursor lands where the selection starts/ends
 
 ;! Unused Keys, need revision
-; some issues with L63,64 in godot
 ; c, v, t, b
 
 ; ----------------------------------------------------------------------------------------------------
