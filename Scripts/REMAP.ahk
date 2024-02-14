@@ -35,25 +35,21 @@ RShift & f::Send "{Right}"
 
                                 ; Go to the previous/next word
 RShift & w::Send "{Ctrl Down}{Left}{Ctrl Up}"
-RShift & r::Send "{Ctrl Down}{Right}{Ctrl Up}"  
+RShift & r::Send "{Ctrl Down}{Right}{Ctrl Up}"
 
-                                
 RShift & g::Send "{Home}"       ; Alternate Keys for home/end
 RShift & a::Send "{End}"
 
 ;* Simulate Scroll
 ; Note: You can scroll sideways with mouse while holding shift
 
-LinesPerScroll := 3, CharsPerScroll := 6
+RShift & c::Send "{WheelUp}"    ; Scroll Up/Down
+RShift & v::Send "{WheelDown}"
 
-                                ; Scroll Up/Down
-RShift & c::Send "{WheelUp}{Up " LinesPerScroll "}"
-RShift & v::Send "{WheelDown}{Down " LinesPerScroll "}"
-
-                                ; Scroll left/right if CapsLock is held
 #HotIf GetKeyState("RCtrl")
-    RShift & c::Send "{WheelLeft}{Left " CharsPerScroll "}"
-    RShift & v::Send "{WheelRight}{Right " CharsPerScroll "}"
+                                ; Scroll Left/Right if CapsLock is held
+    RShift & c::Send "{WheelLeft}"
+    RShift & v::Send "{WheelRight}"
 #HotIf
 
 Rshift & t::Send "{PgUp}"
@@ -89,7 +85,7 @@ RShift & z::CapsLock            ; Toggle Capslock
     RShift & a::Send "{Shift Down}{End}{Shift Up}"
 #HotIf
 
-RShift & q::Send "{Esc}"        ; Escape suggestion
+RShift & q::Send "{Esc}"        ; Escape suggestion/selection
 
 ; To deselect text, move left or right.
 ; cursor lands where the selection starts/ends
