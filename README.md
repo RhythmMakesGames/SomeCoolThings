@@ -1,4 +1,3 @@
-# SomeCoolThings
- I hope you'd find something useful here
+### Few things you might find useful:
 
-1. Try out my [REMAP](Scripts/REMAP.ahk) script. I use it all the time.
+1. AHK Script ([REMAP](Scripts/REMAP.ahk)) I use to make text editing easier across all programs.
