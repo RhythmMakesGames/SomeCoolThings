@@ -89,8 +89,19 @@ RShift & q::Send "{Esc}"        ; Escape suggestion/selection
 
 ; To deselect text, move left or right.
 ; cursor lands where the selection starts/ends
-
+                 
 ;! Unused Keys, need revision
 ; c, v, t, b
+
+; ;* Filter search results
+; RShift & /::Send "" blacklist "{Enter}"
+; blacklist := 
+; (
+;     " -geeksforgeeks"
+;     " -javatpoint"
+;     " -pinterest"
+;     " -programiz"
+;     " -quora"
+; )
 
 ; ----------------------------------------------------------------------------------------------------
