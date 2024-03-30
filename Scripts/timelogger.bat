@@ -1,6 +1,6 @@
 :: ----------------------------------------------------------------------
 
-:: Simple time tracker batch script to keep you productive :)
+:: Simple time logger batch script to keep you productive :)
 
 :: uncomment(remove @REM from) 'goto todays_log' if View Logs too slow.
 :: Rename the script to !timelogger.bat so it shows up before other files
@@ -25,7 +25,7 @@ set DD=%date:~7,2%
 
 set present_day=%YY%-%MM%-%DD%
 set present_time=%time:~,5%
-set logfile_name=%present_day%_log.txt
+set present_day_logfile=%present_day%_log.txt
 
 echo [34mPresent Day:[0m %present_day%
 echo [34mPresent Time:[0m %present_time%
@@ -53,16 +53,16 @@ goto refresh
 
 :add_entry
 set /p entry_value=Entry Summary: 
-echo %present_time% - %entry_value%>> %logfile_name%
+echo %present_time% - %entry_value%>> %present_day_logfile%
 @REM echo Entry added..
 @REM pause
 goto refresh
 
 :edit_logfile_notepad
-if exist %logfile_name% (
-	notepad %logfile_name%
+if exist %present_day_logfile% (
+	notepad %present_day_logfile%
 ) else (
-	echo No log file found..
+	echo No log file found.
 	echo Add an entry to create a new one.
 	echo.
 	pause
@@ -70,10 +70,10 @@ if exist %logfile_name% (
 goto refresh
 
 :edit_logfile_vim
-if exist %logfile_name% (
-	nvim %logfile_name%
+if exist %present_day_logfile% (
+	nvim %present_day_logfile%
 ) else (
-	echo No log file found..
+	echo No log file found.
 	echo Add an entry to create a new one.
 	echo.
 	pause
@@ -86,23 +86,27 @@ goto refresh
 echo loading..
 for /f "delims=" %%a in (
 	' powershell -command "Get-Date (Get-Date).AddDays(-1) -Format 'yyyy-MM-dd'" '
-) do set "previous_day=%%a_log.txt"
+) do set "previous_day_logfile=%%a_log.txt"
 cls
 
 :: since your day probably ends at 2 am
 :: you might need logs from the day before
 
 echo [34m[Day Before]:[0m
-if exist %previous_day% (
-	type %previous_day%
+if exist %previous_day_logfile% (
+	type %previous_day_logfile%
 ) else (
-	echo not found..
+	echo No logs found.
 )
 echo.
 
 :todays_log
 echo [34m[Present Day]:[0m
-type %logfile_name%
+if exist %present_day_logfile% (
+	type %present_day_logfile%
+) else (
+	echo No logs found.
+)
 echo.
 
 pause
